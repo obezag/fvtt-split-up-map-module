@@ -15,7 +15,7 @@ You can install the latest version of Python 3.x from the official source: https
 
 If you follow the default installation instructions, Python should be installed to your path. To check if it is, after installation, open a command prompt and type _python_ followed by the _enter_ key. If you get anything other than "'python' is not a recognized internal or external command, operable program or batch file." you're good to go. To leave the python interpreter that you just opened, either close the command line window or type exit() followed by the _enter_ key.
 
-To run this script, open a command window in the folder that has the script in it and enter _python fvtt-split-up-map-module.py_. 
+To run this script, open a command window in the folder that has the script in it and enter _.\python fvtt-split-up-map-module.py_. 
 
 (You can open a powershell window, command's cooler, younger brother in a folder by navigating to the folder in Windows Explorer and holding _shift_ while right clicking and then selecting "Open Powershell Window Here".)
 

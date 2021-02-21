@@ -62,6 +62,12 @@ If you have your FoundryVTT set up on a cloud service provider, you probably do 
 # Advanced Function: Recompress Images
 Some map makers like to make map-packs of lossless, beautiful maps. These lossless maps are very large, but a bit of lossy compression wouldn't hurt them. 
 
+
+**WARNING**: Prepare a new folder for the output; don't try to overwrite previous output!
+**WARNING**: This will take _much_ longer, so be prepared to wait because high-quality compression takes a minute or thirty.
+**WARNING**: These apply to ALL of the below in this section.
+
+__Default Recompression__
 If you have FFMPEG installed on your computer, you can tell the script to save a re-compressed image in the new module, instead of just copying over the old one. (There's generally no point to doing this if your images are already compressed. If you have maps that are on the order of a few Megabytes, I would not bother with this.)
 
 Here's how you do it:
@@ -69,21 +75,27 @@ Here's how you do it:
 2. Set its value to "ffmpeg" (if ffmpeg is installed on your path) or to the absolute path to _ffmpeg.exe_. 
 3. Save the script.
 4. When you run it now, the script will compress each PNG and JPG image to a lossy webp.
-**WARNING**: Prepare a new folder for the output; don't try to overwrite previous output!
-**WARNING**: This will take _much_ longer, so be prepared to wait because high-quality compression takes a minute or thirty.
 
+
+__Change Compression Level__
 You can also modify the level of compression used by ffmpeg easily:
 1. Find the section of code that references "os.system()". The command here passes flags to ffmpeg. 
 2. If you want a larger, higher-quality lossy image, increase the value behind _-qscale_ (it can go up to 100). 
 3. If you want a lossless image, because lossless webp is generally better than other lossless formats, pump -qscale to 100 and set -lossless to 1.
+4. If you suspect that _-preset drawing_ doesn't match your use case, delete it!
 (-libwebp documentation: http://underpop.online.fr/f/ffmpeg/help/libwebp.htm.gz)
 
-_You can change the output format to another file type entirely, if you're comfortable with ffmpeg, as long as you modify the os.system() command appropriately _and_ change the "image_ext" to the approrpiate file extension.
+__Change Output Format or Re-Compressing Tool__
+You can change the output format to another file type entirely, if you're comfortable with ffmpeg, as long as you modify the os.system() command appropriately _and_ change the "image_ext" to the approrpiate file extension.
 
 You could even use an entirely different command line program, as long as you modify the ffmpeg_location and image_ext variables appropriately and the os.system() command.
 
-You can also modify the filter and output format of the compressed image if you're not a fan of ffmpeg, for some inexplicable reason.
+You can also modify the filter and output format of the compressed image if you're not a fan of libwebp, for some inexplicable reason.
+
+__Add Additional Image Types__
+By default, the recompression only occurs with ".png" and ".jpg" and ".jpeg" images, because I am too lazy to enumerate all possible image types, or find a more intelligent way to recognize an image file.
+
+If your preferred map maker creates files with different file extensions and you want to recompress those bad boys, find the part of the code where ".jpg" and ".png" are enumerated. Add your extension as a string to that list, and the recompression code should work with your images too!
 
 # Warnings
-
 This program didn't explode my computer. It is, however, a very janky program. Run at your own risk!

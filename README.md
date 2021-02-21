@@ -97,5 +97,11 @@ By default, the recompression only occurs with ".png" and ".jpg" and ".jpeg" ima
 
 If your preferred map maker creates files with different file extensions and you want to recompress those bad boys, find the part of the code where ".jpg" and ".png" are enumerated. Add your extension as a string to that list, and the recompression code should work with your images too!
 
-# Warnings
+# Warnings: Run at your own Risk
 This program didn't explode my computer. It is, however, a very janky program. Run at your own risk!
+
+While this program works on the map packs I tested it on, it may not work for you. Rather than reading about how Foundry VTT's "db" format works, I just treated it like oddly-formatted JSON. Only cool people (like you) read documentation. I am not a cool person. (If you find a free map pack that this does not work for, feel free to open an issue, and I may or may not look at it.)
+
+In the same vein, just because it works now doesn't mean it will work in the future, especially if Foundry VTT updates their "db" format.
+
+This works on my Windows 10 machine. It will probably work on Linux, but I can't guarantee it. It'll probably work on your Windows 10 machine, but I can't guarantee that either.
